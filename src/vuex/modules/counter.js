@@ -32,6 +32,7 @@ const actions = {
 };
 
 const getters = {
+  count: stt => stt.count,
   evenOrOdd: stt => (stt.count % 2 === 0 ? 'even' : 'odd'),
 };
 

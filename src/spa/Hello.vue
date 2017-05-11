@@ -18,19 +18,42 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <div>
-      <Counter />
+      <Counter
+        :count="count"
+        :evenOrOdd="evenOrOdd"
+        :increment="increment"
+        :decrement="decrement"
+        :incrementIfOdd="incrementIfOdd"
+        :incrementAsync="incrementAsync"
+      />
     </div>
   </div>
-
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import Counter from '@/shared-components/Counter';
 
 export default {
   name: 'hello',
   components: {
     Counter,
+  },
+  computed: {
+    ...mapGetters(
+      'counter', [
+        'count',
+        'evenOrOdd',
+      ]),
+  },
+  methods: {
+    ...mapActions(
+      'counter', [
+        'increment',
+        'decrement',
+        'incrementIfOdd',
+        'incrementAsync',
+      ]),
   },
   data() {
     return {
